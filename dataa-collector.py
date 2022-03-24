@@ -1,16 +1,19 @@
 import cv2
 import numpy as np
-from datetime import datetime
+from datetime import datetime, date
 import os
 import time
 class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise']
 class_counts = [0, 0, 0, 0, 0]
 label_index = 0
 
+today = date.today()
+current_date = today.strftime("%Y:%m:%d")
+
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 root_folder = "data"
-set_folder = "set-"+current_time
+set_folder = "set-"+current_date+":"+current_time
 os.makedirs(os.path.join(root_folder,set_folder))
 for label in class_labels:
     os.makedirs(os.path.join(root_folder,set_folder,label))
